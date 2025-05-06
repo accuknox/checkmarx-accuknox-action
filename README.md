@@ -145,7 +145,7 @@ on:
       - main
 
 jobs:
-  sast:
+  cx_ak:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source
