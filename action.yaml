@@ -1,0 +1,44 @@
+name: 'Checkmarx to AccuKnox Uploader'
+description: 'Fetches Checkmarx results and uploads them to AccuKnox Console'
+inputs:
+  api_key:
+    description: 'Checkmarx API key'
+    required: true
+  project_name:
+    description: 'Checkmarx project name'
+    required: true
+  accuknox_endpoint:
+    description: 'AccuKnox API endpoint URL to upload the scan results.'
+    required: true
+  tenant_id:
+    description: 'Unique ID of the tenant for AccuKnox Console.'
+    required: true
+  ak_token:
+    description: 'Token for authenticating with AccuKnox Console.'
+    required: true
+  label_id:
+    description: 'Label in AccuKnox Console for tagging scan results.' 
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run Checkmarx fetch job
+      run: |
+        docker run --rm \
+          -e API_KEY=${{ inputs.api_key }} \
+          -e PROJECT_NAME="${{ inputs.project_name }}" \
+          -e REPORT_PATH="/app/data/" \
+          -v "${{ github.workspace }}:/app/data/" \
+          accuknox/checkmarxjob:1.0.4
+      shell: bash
+
+    - name: Upload results to AccuKnox
+      run: |
+        file=$(ls CHECKMARX-*.json | head -n1)
+        curl --location "${{ inputs.accuknox_endpoint }}/api/v1/artifact/?tenant_id=${{ inputs.tenant_id }}&data_type=CX&save_to_s3=true&label_id=${{ inputs.label_id }}" \
+          --header "Tenant-Id: ${{ inputs.tenant_id }}" \
+          --header "Authorization: Bearer ${{ inputs.ak_token }}" \
+          --form "file=@$file"
+      shell: bash
+
