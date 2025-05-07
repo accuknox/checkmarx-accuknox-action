@@ -1,4 +1,4 @@
-name: 'Checkmarx to AccuKnox Uploader'
+name: 'Checkmarx AccuKnox Integration'
 description: 'Fetches Checkmarx results and uploads them to AccuKnox Console'
 inputs:
   api_key:

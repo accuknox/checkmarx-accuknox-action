@@ -1,4 +1,4 @@
-# 🔐 Checkmarx to AccuKnox GitHub Action
+# 🔐 Checkmarx AccuKnox Integration
 
 Easily fetch Checkmarx scan results and upload them to the AccuKnox Console using this GitHub Action.
 
@@ -51,7 +51,7 @@ Use [Checkmarx AST GitHub Action](https://github.com/checkmarx/ast-github-action
 Then fetch and upload results:
 
 ```yaml
-- name: Upload Checkmarx results to AccuKnox
+- name: Checkmarx AccuKnox Integration
   uses: accuknox/accuknox-checkmarx-action@v1.0.1
   with:
     api_key: ${{ secrets.CX_API_KEY }}
@@ -69,7 +69,7 @@ Then fetch and upload results:
 If your project is already scanned in Checkmarx (manually or in a separate pipeline), use this action directly to fetch & upload:
 
 ```yaml
-- name: Upload Checkmarx results to AccuKnox
+- name: Checkmarx AccuKnox Integration
   uses: accuknox/accuknox-checkmarx-action@v1.0.1
   with:
     api_key: ${{ secrets.CX_API_KEY }}
@@ -151,7 +151,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v3
 
-      - name: Upload Checkmarx results to AccuKnox
+      - name: Checkmarx AccuKnox Integration
         uses: accuknox/accuknox-checkmarx-action@v1.0.1
         with:
           api_key: ${{ secrets.CX_API_KEY }}
