@@ -42,3 +42,6 @@ runs:
           --form "file=@$file"
       shell: bash
 
+branding:
+  icon: "shield"
+  color: "green"
