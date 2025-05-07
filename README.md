@@ -178,8 +178,3 @@ jobs:
 [MIT License](https://chatgpt.com/c/LICENSE)
 
 ---
-
-```
-
-Let me know if you’d like me to package this into a `release.zip`, generate a marketplace-friendly summary, or assist with publishing.
-```
