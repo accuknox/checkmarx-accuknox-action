@@ -175,6 +175,6 @@ jobs:
 
 ## 📝 License
 
-[MIT License](https://chatgpt.com/c/LICENSE)
+[MIT License](LICENSE)
 
 ---
