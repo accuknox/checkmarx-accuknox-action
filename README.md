@@ -52,7 +52,7 @@ Then fetch and upload results:
 
 ```yaml
 - name: Checkmarx AccuKnox Integration
-  uses: accuknox/accuknox-checkmarx-action@v1.0.1
+  uses: accuknox/checkmarx-accuknox-action@v1.0.0
   with:
     api_key: ${{ secrets.CX_API_KEY }}
     project_name: "your-checkmarx-project"
@@ -70,7 +70,7 @@ If your project is already scanned in Checkmarx (manually or in a separate pipel
 
 ```yaml
 - name: Checkmarx AccuKnox Integration
-  uses: accuknox/accuknox-checkmarx-action@v1.0.1
+  uses: accuknox/checkmarx-accuknox-action@v1.0.0
   with:
     api_key: ${{ secrets.CX_API_KEY }}
     project_name: "your-checkmarx-project"
@@ -152,7 +152,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Checkmarx AccuKnox Integration
-        uses: accuknox/accuknox-checkmarx-action@v1.0.1
+        uses: accuknox/checkmarx-accuknox-action@v1.0.0
         with:
           api_key: ${{ secrets.CX_API_KEY }}
           project_name: "sample-app"
