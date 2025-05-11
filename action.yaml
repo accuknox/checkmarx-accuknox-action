@@ -19,6 +19,10 @@ inputs:
   label_id:
     description: 'Label in AccuKnox Console for tagging scan results.' 
     required: true
+  upload_artifact:
+    description: 'Whether to upload scan results as a GitHub artifact'
+    required: false
+    default: 'false'
 
 runs:
   using: 'composite'
@@ -39,6 +43,15 @@ runs:
           --header "Tenant-Id: ${{ inputs.tenant_id }}" \
           --header "Authorization: Bearer ${{ inputs.ak_token }}" \
           --form "file=@$file"
+      shell: bash
+
+    - name: Upload Scan Results as Artifact
+      if: inputs.upload_artifact == 'true'
+      uses: actions/upload-artifact@v4
+      with:
+        name: checkmarx-scan-results
+        path: CHECKMARX-*.json
+        if-no-files-found: ignore
       shell: bash
 
 branding:

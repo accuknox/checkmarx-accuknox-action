@@ -92,6 +92,7 @@ If your project is already scanned in Checkmarx (manually or in a separate pipel
 | `tenant_id`         | AccuKnox Tenant ID                                | ✅ Yes    |
 | `ak_token`          | AccuKnox API token for authentication             | ✅ Yes    |
 | `label_id`          | Label to categorize the uploaded scan in AccuKnox | ✅ Yes    |
+| `upload_artifact`   | Upload scan results as a GitHub artifact          | No        |
 
 ---
 
