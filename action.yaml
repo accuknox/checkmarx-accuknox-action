@@ -52,7 +52,6 @@ runs:
         name: checkmarx-scan-results
         path: CHECKMARX-*.json
         if-no-files-found: ignore
-      shell: bash
 
 branding:
   icon: "shield"
