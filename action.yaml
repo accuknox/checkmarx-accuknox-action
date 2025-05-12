@@ -39,7 +39,7 @@ runs:
     - name: Upload results to AccuKnox
       run: |
         file=$(ls CHECKMARX-*.json | head -n1)
-        curl --location "${{ inputs.accuknox_endpoint }}/api/v1/artifact/?tenant_id=${{ inputs.tenant_id }}&data_type=CX&save_to_s3=true&label_id=${{ inputs.label_id }}" \
+        curl --location "https://${{ inputs.accuknox_endpoint }}/api/v1/artifact/?tenant_id=${{ inputs.tenant_id }}&data_type=CX&save_to_s3=true&label_id=${{ inputs.label_id }}" \
           --header "Tenant-Id: ${{ inputs.tenant_id }}" \
           --header "Authorization: Bearer ${{ inputs.ak_token }}" \
           --form "file=@$file"
