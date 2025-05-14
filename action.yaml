@@ -33,7 +33,6 @@ runs:
   steps:
     - name: Run Checkmarx fetch job
       run: |
-        run: |
         CMD="docker run --rm \
           -e API_KEY=${{ inputs.api_key }} \
           -e PROJECT_NAME='${{ inputs.project_name }}' \
