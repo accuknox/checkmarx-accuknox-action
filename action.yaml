@@ -33,7 +33,7 @@ runs:
           -e PROJECT_NAME="${{ inputs.project_name }}" \
           -e REPORT_PATH="/app/data/" \
           -v "${{ github.workspace }}:/app/data/" \
-          accuknox/checkmarxjob:1.0.4
+          accuknox/checkmarx-one-job:1.0
       shell: bash
 
     - name: Upload results to AccuKnox
