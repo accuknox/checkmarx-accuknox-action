@@ -19,6 +19,10 @@ inputs:
   label_id:
     description: 'Label in AccuKnox Console for tagging scan results.' 
     required: true
+  main_branch:
+    description: 'Fetch results from Main branch. By default, it fetches results from most recent branch that was scanned.'
+    required: false
+    default: 'false'
   upload_artifact:
     description: 'Whether to upload scan results as a GitHub artifact'
     required: false
@@ -29,11 +33,18 @@ runs:
   steps:
     - name: Run Checkmarx fetch job
       run: |
-        docker run --rm -e API_KEY=${{ inputs.api_key }} \
-          -e PROJECT_NAME="${{ inputs.project_name }}" \
-          -e REPORT_PATH="/app/data/" \
-          -v "${{ github.workspace }}:/app/data/" \
-          accuknox/checkmarx-one-job:1.0
+        run: |
+        CMD="docker run --rm \
+          -e API_KEY=${{ inputs.api_key }} \
+          -e PROJECT_NAME='${{ inputs.project_name }}' \
+          -e REPORT_PATH='/app/data/'"
+          
+        if [[ "${{ inputs.main_branch }}" == "true" ]]; then
+          CMD="$CMD -e MAIN_BRANCH=true"
+        fi
+
+        CMD="$CMD -v '${{ github.workspace }}:/app/data/' accuknox/checkmarx-one-job:1.0"
+        eval "$CMD"
       shell: bash
 
     - name: Upload results to AccuKnox
