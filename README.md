@@ -52,7 +52,7 @@ Then fetch and upload results:
 
 ```yaml
 - name: Checkmarx AccuKnox Integration
-  uses: accuknox/checkmarx-accuknox-action@v1.0.0
+  uses: accuknox/checkmarx-accuknox-action@latest
   with:
     api_key: ${{ secrets.CX_API_KEY }}
     project_name: "your-checkmarx-project"
@@ -154,7 +154,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Checkmarx AccuKnox Integration
-        uses: accuknox/checkmarx-accuknox-action@v1.0.0
+        uses: accuknox/checkmarx-accuknox-action@latest
         with:
           api_key: ${{ secrets.CX_API_KEY }}
           project_name: "sample-app"
